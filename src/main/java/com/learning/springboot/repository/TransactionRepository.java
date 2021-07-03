@@ -10,5 +10,7 @@ import com.learning.springboot.beans.de.TransactionDE;
 public interface TransactionRepository extends CrudRepository<TransactionDE, Integer> {
 
 	public Iterable<TransactionDE> findAllByDeletedFalse();
+	
+	public Iterable<TransactionDE> findAllByCategoryId(int categoryId);
 
 }

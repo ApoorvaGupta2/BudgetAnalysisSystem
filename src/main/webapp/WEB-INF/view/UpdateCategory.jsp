@@ -17,9 +17,10 @@ function load() {
 <body onload="load()">
 	<jsp:include page="/menu.jsp"></jsp:include>
 	<form action="${pageContext.request.contextPath}/category/update" method="POST">
-		Category<input type="text" name="name" id="name" value ="${category.name}"/><br/><br/>
+		<br/>Category<input type="text" name="name" id="name" value ="${category.name}"/><br/><br/>
 		Income<input type ="radio" name="type" id="type_INCOME" value="INCOME"/>
 		Expense<input type ="radio" name="type" id="type_EXPENSE" value="EXPENSE"/><br/><br/>
+		Budget<input type="text" name ="budget" id="budget" value ="${category.budget}"/><br/><br/>
 		<input type="hidden" name="id" id="id" value="${category.id}"/>
 		<input type="submit" value="submit"/>
 	</form>

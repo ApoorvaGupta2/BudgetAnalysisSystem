@@ -9,11 +9,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.learning.springboot.service.BudgetAnalysisService;
 
 @Controller
-@RequestMapping("/BudgetAnalysis")
+@RequestMapping("/budgetanalysis")
 public class BudgetAnalysisController {
 	
 	@Autowired
-	BudgetAnalysisService budgetAnalysisService;
+	private BudgetAnalysisService budgetAnalysisService;
 	
 	@RequestMapping(path="/",method = RequestMethod.GET)
 	public ModelAndView getBudgetAnalysis() {

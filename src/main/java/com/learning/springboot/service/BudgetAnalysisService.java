@@ -16,10 +16,10 @@ import com.learning.springboot.type.TransactionType;
 public class BudgetAnalysisService {
 	
 	@Autowired
-	CategoryService categoryService;
+	private CategoryService categoryService;
 	
 	@Autowired
-	TransactionService transactionservice;
+	 private TransactionService transactionservice;
 	
 	public List<BudgetAnalysisAE> getCategoryAndBudgetedAndActualAmounts() {
 		

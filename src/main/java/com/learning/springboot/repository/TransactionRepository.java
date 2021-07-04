@@ -1,6 +1,8 @@
 package com.learning.springboot.repository;
 
 
+import java.sql.Date;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +13,7 @@ public interface TransactionRepository extends CrudRepository<TransactionDE, Int
 
 	public Iterable<TransactionDE> findAllByDeletedFalse();
 	
-	public Iterable<TransactionDE> findAllByCategoryId(int categoryId);
+	public Iterable<TransactionDE> findAllByCategoryIdAndDateBetween(int categoryId, Date startDate, Date endDate);
+
 
 }

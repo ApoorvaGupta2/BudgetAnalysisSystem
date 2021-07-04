@@ -1,6 +1,7 @@
 package com.learning.springboot.service;
 
 import java.util.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -66,23 +67,19 @@ public class TransactionService {
 		return aeList;
 	}
 
-	public List<TransactionAE> getAllTransactionsByGivenCategory(CategoryAE ae) {
-		List<TransactionDE> deList = (List<TransactionDE>) transactionRepository.findAllByCategoryId(ae.getId());
-		List<TransactionAE> aeList = new ArrayList<TransactionAE>();
-		Calendar cal1 = Calendar.getInstance();
-		Calendar cal2 = Calendar.getInstance();
-		for (int i = 0; i < deList.size(); i++) {
-			TransactionDE transactionDE = deList.get(i);
-			cal1.setTime(transactionDE.getDate());
-			cal2.setTime(new Date());
-			if (cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)) {
-				if (cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH)) {
-					TransactionAE transactionAE = convert(transactionDE);
-					aeList.add(transactionAE);
-				}
-			}
+	public List<TransactionAE> getAllTransactionsByGivenCategory(CategoryAE categoryAE) {
+//		List<TransactionDE> deList = (List<TransactionDE>) transactionRepository.findAllByCategoryIdAndDateBetween(
+//				ae.getId(), new java.sql.Date(firstDate.getTime()), new java.sql.Date(todayDate.getTime()));
+		List<TransactionDE> transactionDeList = (List<TransactionDE>) transactionRepository.findAllByCategoryIdAndDateBetween(
+				categoryAE.getId(), java.sql.Date.valueOf(LocalDate.now().withDayOfMonth(1)),
+				java.sql.Date.valueOf(LocalDate.now()));
+		List<TransactionAE> transactionAeList = new ArrayList<TransactionAE>();
+		for (int i = 0; i < transactionDeList.size(); i++) {
+			TransactionDE transactionDE = transactionDeList.get(i);
+			TransactionAE transactionAE = convert(transactionDE);
+			transactionAeList.add(transactionAE);
 		}
-		return aeList;
+		return transactionAeList;
 	}
 
 	private TransactionDE convert(TransactionAE ae) {

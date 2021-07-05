@@ -13,7 +13,7 @@
 		Category<input type="text" name="name" id="name"/><br/><br/>
 		Income<input type ="radio" name="type" value="INCOME"/>
 		Expense<input type ="radio" name="type" value="EXPENSE"/><br/><br/>
-		Budget<input type="text" name ="budget" id="budget"/><br/><br/>
+		Budget<input type="number" name ="budget" id="budget" min="0" step="0.01"/><br/><br/>
 		<input type="submit" value="submit"/>
 	</form>
 	<br/><a href="ShowCategory/">Show all Categories</a>

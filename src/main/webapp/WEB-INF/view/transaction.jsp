@@ -35,7 +35,7 @@
 		</select><br /> <br /> Date: <input type="date" id="date" name="date"
 			onkeydown="return false"></input><br /> <br /> Detail: <input
 			type="text" id="detail" name="detail"></input><br /> <br /> Amount:
-		<input type="number" id="amount" name="amount" pattern="[0-9]*"></input><br />
+		<input type="number" id="amount" name="amount" min ="0" step="0.01"></input><br />
 		<br /> <input type="submit" value="Submit" />
 	</form>
 	<br/><a href="ShowTransaction/">Show all transactions</a>

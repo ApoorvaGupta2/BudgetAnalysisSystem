@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.learning.springboot.beans.ae.TransactionAE;
+import com.learning.springboot.service.AccountService;
 import com.learning.springboot.service.CategoryService;
 import com.learning.springboot.service.TransactionService;
 import com.learning.springboot.type.TransactionType;
@@ -26,6 +27,9 @@ public class TransactionController {
 	@Autowired
 	private CategoryService categoryService;
 	
+	@Autowired
+	private AccountService accountService;
+	
 
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public ModelAndView getView(@RequestParam(required = false) TransactionType type) {
@@ -34,6 +38,7 @@ public class TransactionController {
 		if(type != null) {
 			mv.addObject("categories",categoryService.getActiveCategoriesByType(type));
 			mv.addObject("type",type);
+			mv.addObject("accounts",accountService.getAccounts());
 		}
 		return mv;
 	}

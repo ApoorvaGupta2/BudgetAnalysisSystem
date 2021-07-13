@@ -23,6 +23,8 @@ public class TransactionAE {
 	private String categoryName;
 	
 	private TransactionType type;
+	
+	private int accountId;
 
 	public int getId() {
 		return id;
@@ -79,6 +81,14 @@ public class TransactionAE {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-	
+
+	public int getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(int accountId) {
+		this.accountId = accountId;
+	}
+
 	
 }

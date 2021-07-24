@@ -11,21 +11,23 @@ import javax.persistence.Table;
 import com.learning.springboot.type.AccountType;
 
 @Entity
-@Table(name="account")
+@Table(name = "account")
 public class AccountDE {
-	
-private String name;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	private String name;
 
 	private AccountType type;
-	
+
 	private BigDecimal openingBalance;
 	
+	private String accountNumber;
+
 	private boolean deleted;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -66,5 +68,12 @@ private String name;
 		this.deleted = deleted;
 	}
 
-	
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+
 }

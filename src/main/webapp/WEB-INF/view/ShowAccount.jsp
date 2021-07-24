@@ -32,7 +32,7 @@
 				<td>${status.count}</td>
 				<td>${account.name}</td>
 				<td>${account.type}</td>
-				<td>${account.opnBalance}</td>
+				<td>${account.openingBalance}</td>
 				<td><input type="button" name="updateAccount" value="update" onClick="updateAccount(${account.id})"/></td>
 				<td><input type="button" name="deleteAccount" value="delete" onClick="deleteAccount(${account.id})"/></td>
 			</tr>

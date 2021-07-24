@@ -13,6 +13,8 @@ public class AccountAE {
 	private AccountType type;
 	
 	private BigDecimal openingBalance;
+	
+	private String accountNumber;
 
 	public String getName() {
 		return name;
@@ -44,6 +46,14 @@ public class AccountAE {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 
 }

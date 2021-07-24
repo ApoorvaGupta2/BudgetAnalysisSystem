@@ -17,6 +17,7 @@
 			<option id="type_WALLET" value="WALLET">Wallet</option>
 			<option id="type_UPI" value="UPI">UPI</option>
 		</select><br />
+		<br /> Account number <input type="text" name="accountNumber"/><br />
 		<br /> Opening Balance <input type="number" name="openingBalance" min="0"step="0.01" /><br />
 		<br /> <input type="submit" value="submit" />
 	</form>

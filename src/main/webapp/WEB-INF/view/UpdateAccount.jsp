@@ -11,7 +11,7 @@
 	<form action="${pageContext.request.contextPath}/account/update" method="POST">
 	Name<input type="text" name="name" value="${accounts.name}"/><br/><br/>
 	Type<input type="text" name="type" value="${accounts.type}"/><br/><br/>
-	Opening Balance<input type="number" name="opnBalance" value="${accounts.opnBalance}"><br/><br/>
+	Opening Balance<input type="number" name="openingBalance" value="${accounts.openingBalance}"><br/><br/>
 	<input type="hidden" name="id" value="${accounts.id}"/>
 	<input type="submit" value="Submit" />
 	</form>

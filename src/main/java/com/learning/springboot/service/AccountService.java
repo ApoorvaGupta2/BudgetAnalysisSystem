@@ -58,6 +58,7 @@ public class AccountService {
 		accountDE.setName(accountAE.getName());
 		accountDE.setOpeningBalance(accountAE.getOpeningBalance());
 		accountDE.setType(accountAE.getType());
+		accountDE.setAccountNumber(accountAE.getAccountNumber());		
 		return accountDE;
 	}
 
@@ -68,6 +69,7 @@ public class AccountService {
 		accountAE.setName(accountDE.getName());
 		accountAE.setOpeningBalance(accountDE.getOpeningBalance());
 		accountAE.setType(accountDE.getType());
+		accountAE.setAccountNumber(accountDE.getAccountNumber());
 		return accountAE;
 	}
 

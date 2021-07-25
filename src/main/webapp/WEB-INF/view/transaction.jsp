@@ -21,8 +21,7 @@
 </head>
 <body onload="getTransactionType()">
 	<jsp:include page="/menu.jsp"></jsp:include>
-	<form action="${pageContext.request.contextPath}/transaction/"
-		method="POST"><br/>
+	<form action="${pageContext.request.contextPath}/transaction/" method="POST"><br/>
 		Transaction Type: <select name="type" id="type"
 			onchange="getCategory()">
 			<option value="" id="type_">Select</option>
@@ -35,7 +34,12 @@
 		</select><br /> <br /> Date: <input type="date" id="date" name="date"
 			onkeydown="return false"></input><br /> <br /> Detail: <input
 			type="text" id="detail" name="detail"></input><br /> <br /> Amount:
-		<input type="number" id="amount" name="amount" min ="0" step="0.01"></input><br />
+		<input type="number" id="amount" name="amount" min ="0" step="0.01"></input><br /><br/>
+		Account <select name="accountId">
+					<c:forEach items="${accounts}" var="account">
+						<option value="${account.id}">${account.name} (${account.type} -${account.accountNumber})</option> 	
+					</c:forEach>
+				</select><br/>
 		<br /> <input type="submit" value="Submit" />
 	</form>
 	<br/><a href="ShowTransaction/">Show all transactions</a>

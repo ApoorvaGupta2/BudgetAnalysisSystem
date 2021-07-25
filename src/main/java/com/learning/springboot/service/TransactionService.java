@@ -1,10 +1,9 @@
 package com.learning.springboot.service;
 
-import java.util.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
+import java.util.stream.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,21 +22,23 @@ public class TransactionService {
 
 	@Autowired
 	private CategoryService categoryService;
+	
+	@Autowired
+	private AccountTransactionService accountTransactionService;
+	
 
 	public void submitTransaction(TransactionAE transactionAE) {
 
-		transactionRepository.save(convert(transactionAE));
+		TransactionDE transactionDE = transactionRepository.save(convert(transactionAE));
+		transactionAE.setId(transactionDE.getId());
+		accountTransactionService.create(transactionAE);
 	}
 
 	public List<TransactionAE> getTransaction() {
 
 		List<TransactionDE> deList = (List<TransactionDE>) transactionRepository.findAll();
 		List<TransactionAE> aeList = new ArrayList<TransactionAE>();
-		for (int i = 0; i < deList.size(); i++) {
-			TransactionDE transactionDE = deList.get(i);
-			TransactionAE transactionAE = convert(transactionDE);
-			aeList.add(transactionAE);
-		}
+		aeList = deList.stream().map(e -> convert(e)).collect(Collectors.toList());
 		return aeList;
 	}
 
@@ -59,32 +60,23 @@ public class TransactionService {
 
 		List<TransactionDE> deList = (List<TransactionDE>) transactionRepository.findAllByDeletedFalse();
 		List<TransactionAE> aeList = new ArrayList<TransactionAE>();
-		for (int i = 0; i < deList.size(); i++) {
-			TransactionDE transactionDE = deList.get(i);
-			TransactionAE transactionAE = convert(transactionDE);
-			aeList.add(transactionAE);
-		}
+		aeList = deList.stream().map(e -> convert(e)).collect(Collectors.toList());
 		return aeList;
 	}
 
 	public List<TransactionAE> getAllTransactionsByGivenCategory(CategoryAE categoryAE) {
-//		List<TransactionDE> deList = (List<TransactionDE>) transactionRepository.findAllByCategoryIdAndDateBetween(
-//				ae.getId(), new java.sql.Date(firstDate.getTime()), new java.sql.Date(todayDate.getTime()));
 		List<TransactionDE> transactionDeList = (List<TransactionDE>) transactionRepository.findAllByCategoryIdAndDateBetween(
 				categoryAE.getId(), java.sql.Date.valueOf(LocalDate.now().withDayOfMonth(1)),
 				java.sql.Date.valueOf(LocalDate.now()));
 		List<TransactionAE> transactionAeList = new ArrayList<TransactionAE>();
-		for (int i = 0; i < transactionDeList.size(); i++) {
-			TransactionDE transactionDE = transactionDeList.get(i);
-			TransactionAE transactionAE = convert(transactionDE);
-			transactionAeList.add(transactionAE);
-		}
+		transactionAeList = transactionDeList.stream().map(e -> convert(e)).collect(Collectors.toList());
 		return transactionAeList;
 	}
 
 	private TransactionDE convert(TransactionAE ae) {
 
 		TransactionDE de = new TransactionDE();
+		
 		de.setId(ae.getId());
 		de.setDate(ae.getDate());
 		de.setDetail(ae.getDetail());

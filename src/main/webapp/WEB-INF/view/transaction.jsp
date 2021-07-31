@@ -42,6 +42,6 @@
 				</select><br/>
 		<br /> <input type="submit" value="Submit" />
 	</form>
-	<br/><a href="ShowTransaction/">Show all transactions</a>
+	<br/>
 </body>
 </html>

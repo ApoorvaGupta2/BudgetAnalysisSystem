@@ -12,10 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @ControllerAdvice
 public class GlobalDefaultExceptionHandler {
-	
-	private static final Logger logger = LoggerFactory.getLogger(GlobalDefaultExceptionHandler.class);
-	
 	public static final String DEFAULT_ERROR_VIEW = "error";
+
+	private static final Logger logger = LoggerFactory.getLogger(GlobalDefaultExceptionHandler.class);
 
 	@ExceptionHandler(value = Exception.class)
 	public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
@@ -26,6 +25,7 @@ public class GlobalDefaultExceptionHandler {
 		mav.addObject("exception", e);
 		mav.addObject("url", req.getRequestURL());
 //		mav.setViewName(DEFAULT_ERROR_VIEW);
+		logger.error("error", e);
 		return mav;
 	}
 }

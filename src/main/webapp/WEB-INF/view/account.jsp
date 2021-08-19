@@ -21,6 +21,6 @@
 		<br /> Opening Balance <input type="number" name="openingBalance" min="0"step="0.01" /><br />
 		<br /> <input type="submit" value="submit" />
 	</form>
-	<br/><a href="showaccount/">Show all accounts</a>
+	<br/>
 </body>
 </html>

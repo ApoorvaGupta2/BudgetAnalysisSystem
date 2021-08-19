@@ -16,6 +16,6 @@
 		Budget<input type="number" name ="budget" id="budget" min="0" step="0.01"/><br/><br/>
 		<input type="submit" value="submit"/>
 	</form>
-	<br/><a href="ShowCategory/">Show all Categories</a>
+	<br/>
 </body>
 </html>
